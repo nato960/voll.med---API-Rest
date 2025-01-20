@@ -6,7 +6,7 @@ import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//"@Component" indica ao Spring que é um componente genérico. Porém poderia também ser um "@Service".
+
 @Component
 public class ValidadorDeMedicoComOutraConsultaNoMesmoHorario implements ValidadorAgendamentoDeConsulta {
 

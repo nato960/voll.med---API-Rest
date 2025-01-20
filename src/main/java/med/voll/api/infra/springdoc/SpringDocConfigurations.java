@@ -29,5 +29,6 @@ public class SpringDocConfigurations {
                                 .name("Apache 2.0")
                                 .url("http://voll.med/api/licenca")));
 
+
     }
 }

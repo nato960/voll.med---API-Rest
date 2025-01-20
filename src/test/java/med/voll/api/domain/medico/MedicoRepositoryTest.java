@@ -30,14 +30,11 @@ class MedicoRepositoryTest {
 
     @Autowired
     private TestEntityManager em;
-    //TestEntityManager é usado especificamente para testes automatizados. Em vez de injetar o pacienteRepository e o consultaRepository.
 
     @Test
     @DisplayName("Deveria devolver null quando unico medico cadastrado nao esta disponivel na data")
     void escolherMedicoAleatorioLivreNaDataCenario1() {
 
-        //given ou arrange: Define o contexto ou o estado inicial do sistema. Dados de entrada, configuração de mocks, criação de objetos necessários, etc.
-        //A variável abaixo é utilizada a próxima segunda-feira às 10h a partir da data atual.
         var proximaSegundaAs10 = LocalDate.now()
                 .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
                 .atTime(10, 0);
@@ -46,17 +43,9 @@ class MedicoRepositoryTest {
         var paciente = cadastrarPaciente("Paciente", "paciente@email.com", "00000000000");
         cadastrarConsulta(medico, paciente, proximaSegundaAs10);
 
-        //when ou act: Define a ação ou evento a ser testado. Realiza a operação que será avaliada
         var medicoLivre = medicoRepository.escolherMedicoAleatorioLivreNaData(Especialidade.CARDIOLOGIA, proximaSegundaAs10);
 
-        //then ou assert: Define o resultado esperado após a execução da ação. Realiza as asserções para validar o comportamento do sistema ou o estado final.
         assertThat(medicoLivre).isNull();
-
-// A anotação "@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)" com esse parâmentro indica ao Spring que não deve substituir o banco da aplicação por um banco in-memory, que é o padão.
-//Pois ao acessa o banco in memory pode não dar um erro que daria no banco do projeto, como o MySQL ou Postgres.
-//Entretanto, o deve ser utilizado um outro DB (do mesmo banco).
-//"@ActiveProfiles("test")" indica ao Spring para ler o .properties de testes.
-//"@DataJpaTest" deve ser utilizada para testes envolvendo consultas no DB.
 
     }
 

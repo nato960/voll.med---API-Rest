@@ -24,6 +24,4 @@ public record DadosCadastroMedico(
         @Valid
         DadosEndereco endereco) {
 }
-// Em "@Pattern", regexp eh para passar uma expressao regular de 4 a 6 digitos("\\d{4,6}")
-//"@NotBlank" é apenas para Strings
-//"@Valid" apra validar o outro objeto.
+

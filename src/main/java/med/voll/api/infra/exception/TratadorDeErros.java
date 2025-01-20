@@ -17,19 +17,15 @@ import javax.naming.AuthenticationException;
 @RestControllerAdvice
 public class TratadorDeErros {
 
-    //a anotação indica que esse método lida com o erro indicado no parênteses.
-    //O método abaixo lida com a exception e entrega "NotFound 404".
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity tratarError404(){
         return ResponseEntity.notFound().build();
     }
 
-    //A exceção é parametro para que se tenha quais campos/parâmentro não foram validados.
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarError400(MethodArgumentNotValidException ex){
         var erros = ex.getFieldErrors();
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
-        //Com o .body(), não é necessário o .build().
     }
 
     @ExceptionHandler(ValidacaoException.class)
@@ -62,8 +58,6 @@ public class TratadorDeErros {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
     }
 
-    //O DTO abaixo é um record criando dentro dessa classe pois só será usado dentro dela.
-    //O uso dessa DTO tem como objetivo trazer os campos que não foram validados na requisição, de modo que não apresente o resto do corpo, deixando assim apenas o importante.
     private record DadosErroValidacao(String campo, String mensagem){
 
         public DadosErroValidacao(FieldError erro){

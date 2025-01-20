@@ -15,5 +15,4 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long> {
             p.id = :id
             """)
     Boolean findAtivoById(Long id);
-    //A Query acima faz uma consulta no DB, onde é carregado apenas o atributo "ativo".
 }

@@ -18,4 +18,3 @@ public record DadosAgendamentoConsulta(
 
         Especialidade especialidade){
 }
-//@Future indica que a data só pode ser para o futuro.

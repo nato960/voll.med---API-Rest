@@ -24,7 +24,6 @@ public class Medico {
     private String crm;
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
-    //@Embedded permite que uma entidade (Medico) inclua uma classe que não seja uma entidade independente, mas que represente um grupo de atributos relacionados.
     @Embedded
     private Endereco endereco;
     private Boolean ativo;

@@ -18,4 +18,3 @@ public record DadosEndereco(
         String complemento,
         String numero) {
 }
-//complemnto e numero não opicionais, segundo as regras de negocio, portanto não levam anotações do Bean Validation.

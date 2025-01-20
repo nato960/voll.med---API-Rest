@@ -39,5 +39,5 @@ public class AutenticacaoController {
         }
     }
 }
-// O "AuthenticationManager" verifica se as credenciais fornecidas são válidas.
+
 

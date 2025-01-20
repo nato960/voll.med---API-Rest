@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("consultas")
 @SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
-//O "@SecurityRequirement(name = "bearer-key")" é para configurar e implementar o campo de autenticação "bearer" dos métodos no Swagger no SpringDOC.
+
     @Autowired
     private AgendaDeConsultas agenda;
 

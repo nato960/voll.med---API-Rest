@@ -10,4 +10,3 @@ public record DadosAtualizacaoMedico(
         String telefone,
         DadosEndereco endereco) {
 }
-//Nesse caso, apenas o id eh obrigatório, por tanto o "id" recebe a anotação @NotNull.

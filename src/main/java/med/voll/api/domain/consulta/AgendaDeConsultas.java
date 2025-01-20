@@ -18,7 +18,6 @@ public class AgendaDeConsultas {
     @Autowired
     private ConsultaRepository consultaRepository;
 
-    //Os repositório de Paciente e Médico precisaram ser injetados aqui em função da criação do objeto do tipo Consulta, que precisa do idMedico e idPaciente pelos respectivos repositórios.
     @Autowired
     private MedicoRepository medicoRepository;
 
@@ -27,8 +26,6 @@ public class AgendaDeConsultas {
 
     @Autowired
     private List<ValidadorAgendamentoDeConsulta> validadoresAgendamento;
-    //Na linha acima, o Spring detecta que uma lista está sendo injetada e que o generics é uma interface.
-    // Logo, ele busca todas as classse que implemntam essa interface, cria uma lista essas classes e injeta a lista com cada uma delas.
 
     @Autowired
     private List<ValidadorDeCancelamentoDeConsulta> validadoresCancelamento;
@@ -44,7 +41,6 @@ public class AgendaDeConsultas {
 
         validadoresAgendamento.forEach(v -> v.validar(dados));
 
-        //A linha abaixo carrega o "paciente" no DB.
         var paciente = pacienteRepository.getReferenceById(dados.idPaciente());
         var medico = escolherMedico(dados);
         if (medico == null) {
@@ -80,9 +76,3 @@ public class AgendaDeConsultas {
         consulta.cancelar(dados.motivo());
     }
 }
-
-
-//"@Service" são para o reconheço de classe relacionadas à regras de negócio.
-//Assim, aqui serão realizadas todas as regras de negócio.
-//Em "var medico = medicoRepository.findById(dados.idMedico()).get();" foi necessário a introdução do".get()", pois estava dando erro de compilamento, pois o "findById()" retorna um optional.
-//"getReferenceById()" é melhor usado quando se precisa apenas de uma referência, diferentemente do "findById()" que carrega o objeto por completo, gerando cosulta desnecessãria.
