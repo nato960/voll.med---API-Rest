@@ -70,8 +70,10 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 A aplicação segue uma arquitetura em camadas:
 
 - **Controller:** Responsável por gerenciar as requisições HTTP.
-- **Domain:** Contém as entidades do domínio, a lógica de negócios e interfaces para interação com o banco de dados.
-- **Infra:** Configurações de segurança.
+- **Model:** Contém as entidades do domínio, a lógica de negócios e interfaces para interação com o banco de dados.
+- **Service:** Contém a lógica de negócios.
+- **Repository:** Contém as interfaces para interação com o banco de dados.
+- **Infra:** Configurações de segurança, tratador de erros e configurações do Spring Doc.
 
 
 ---
