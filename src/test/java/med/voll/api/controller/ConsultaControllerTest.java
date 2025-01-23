@@ -1,9 +1,9 @@
 package med.voll.api.controller;
 
-import med.voll.api.domain.consulta.AgendaDeConsultas;
-import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
-import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
-import med.voll.api.domain.medico.Especialidade;
+import med.voll.api.service.ConsultaService;
+import med.voll.api.model.consulta.DadosAgendamentoConsulta;
+import med.voll.api.model.consulta.DadosDetalhamentoConsulta;
+import med.voll.api.model.medico.Especialidade;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -41,7 +39,7 @@ class ConsultaControllerTest {
     private JacksonTester<DadosDetalhamentoConsulta> dadosDetalhamentoConsultaJson;
 
     @MockitoBean
-    private AgendaDeConsultas agendaDeConsultas;
+    private ConsultaService consultaService;
 
     @Test
     @DisplayName("Deveria devolver codigo http 400 quando informacoes estao invalidas")
@@ -62,7 +60,7 @@ class ConsultaControllerTest {
         var especialidade = Especialidade.ORTOPEDIA;
 
         var dadosDetalhamento = new DadosDetalhamentoConsulta(null, 1l, 1l, data);
-        when(agendaDeConsultas.agendar(any())).thenReturn(dadosDetalhamento);
+        when(consultaService.agendar(any())).thenReturn(dadosDetalhamento);
 
         var response = mvc
                 .perform(

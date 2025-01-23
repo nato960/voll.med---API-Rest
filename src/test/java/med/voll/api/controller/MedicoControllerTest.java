@@ -1,8 +1,9 @@
 package med.voll.api.controller;
 
-import med.voll.api.domain.endereco.DadosEndereco;
-import med.voll.api.domain.endereco.Endereco;
-import med.voll.api.domain.medico.*;
+import med.voll.api.model.endereco.DadosEndereco;
+import med.voll.api.model.endereco.Endereco;
+import med.voll.api.model.medico.*;
+import med.voll.api.repository.MedicoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
